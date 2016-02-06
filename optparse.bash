@@ -9,8 +9,7 @@ optparse_arguments_string=""
 
 # -----------------------------------------------------------------------------------------------------------------------------
 optparse.throw_error() {
-  local message="$1"
-        echo "OPTPARSE: ERROR: $message"
+        echo "OPTPARSE: ERROR: $1"
         exit 1
 }
 
