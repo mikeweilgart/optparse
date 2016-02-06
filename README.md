@@ -35,9 +35,9 @@ The script can now make use of the variables. Running the script (without any ar
     OPTIONS:
     
         -f --file  :  The input file
-    	-v --verbose  :  Set flag for verbose mode
+        -v --verbose  :  Set flag for verbose mode
     
-    	-? --help  :  usage
+        -? --help  :  usage
         
 ##Supported definition parameters
 All definition parameters for `optparse.define` are provided as `key=value` pairs, seperated by an `=` sign.

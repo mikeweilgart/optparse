@@ -56,7 +56,7 @@ optparse.define() {
         fi
 
         # build OPTIONS and help
-		optparse_usage="${optparse_usage}#NL#TB${short} $(printf "%-25s %s" "${long}:" "${desc}")"
+        optparse_usage="${optparse_usage}#NL#TB${short} $(printf "%-25s %s" "${long}:" "${desc}")"
         if [ "$default" != "" ]; then
                 optparse_usage="${optparse_usage} [default:$default]"
         fi

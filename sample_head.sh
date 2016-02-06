@@ -11,23 +11,23 @@ optparse.define short=v long=verbose desc="Flag to set verbose mode on" variable
 source $( optparse.build )
 
 if [ "$file" == "" ]; then
-	echo "ERROR: Please provide a file"
-	exit 1
+  echo "ERROR: Please provide a file"
+  exit 1
 fi
 
 # Display arguments
 if [ "$verbose_mode" = "true" ]; then
-	echo "Verbose mode ON"	
-	echo "FILE  : $file"
-	echo "OUTPUT: $output"
-	echo "LINES : $lines"
+  echo "Verbose mode ON"
+  echo "FILE  : $file"
+  echo "OUTPUT: $output"
+  echo "LINES : $lines"
 fi
 
 # Check if input file exists
 if [ "$verbose_mode" = "true" ]; then echo "Checking input file $file..." ; fi
 if [ ! -f $file ]; then
-	echo "File does not exist"
-	exit 1
+  echo "File does not exist"
+  exit 1
 fi
 
 if [ "$verbose_mode" = "true" ]; then echo "Heading first $lines lines into $output..." ; fi
@@ -36,4 +36,3 @@ cat $file | head -n $lines > $output
 if [ "$verbose_mode" = "true" ]; then echo "Done."; fi
 
 exit 0
-	
