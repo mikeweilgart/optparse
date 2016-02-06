@@ -8,14 +8,14 @@ optparse_process=""
 optparse_arguments_string=""
 
 # -----------------------------------------------------------------------------------------------------------------------------
-function optparse.throw_error(){
+optparse.throw_error() {
   local message="$1"
         echo "OPTPARSE: ERROR: $message"
         exit 1
 }
 
 # -----------------------------------------------------------------------------------------------------------------------------
-function optparse.define(){
+optparse.define() {
         if [ $# -lt 3 ]; then
                 optparse.throw_error "optparse.define <short> <long> <variable> [<desc>] [<default>] [<value>]"
         fi
@@ -73,14 +73,14 @@ function optparse.define(){
 }
 
 # -----------------------------------------------------------------------------------------------------------------------------
-function optparse.build(){
+optparse.build() {
         local build_file="/tmp/optparse-${RANDOM}.tmp"
 
         # Building getopts header here
 
         # Function usage
         cat << EOF > $build_file
-function usage(){
+usage() {
 cat << XXX
 usage: \$0 [OPTIONS]
 
