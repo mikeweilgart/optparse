@@ -74,7 +74,8 @@ optparse.define() {
 
 # -----------------------------------------------------------------------------------------------------------------------------
 optparse.build() {
-        local build_file="/tmp/optparse-${RANDOM}.tmp"
+        local build_file="$(mktemp -t optparse-XXXXXXXXXX.tmp)"
+        # On BSD systems this could just be "mktemp -t optparse", but this way it will succeed with GNU mktemp as well.
 
         # Building getopts header here
 
