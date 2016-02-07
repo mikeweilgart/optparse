@@ -18,8 +18,8 @@ optparse.define() {
         if [ $# -lt 3 ]; then
                 optparse.throw_error "optparse.define <short> <long> <variable> [<desc>] [<default>] [<value>]"
         fi
-        for option_id in $( seq 1 $# ) ; do
-                local option="$( eval "echo \$$option_id")"
+        while [ "$#" -gt 0 ] ; do
+                local option="$1"
                 local key="$( echo $option | awk -F "=" '{print $1}' )";
                 local value="$( echo $option | awk -F "=" '{print $2}' )";
 
@@ -45,6 +45,7 @@ optparse.define() {
                 elif [ "$key" = "value" ]; then
                         local val="$value"
                 fi
+                shift
         done
 
         if [ "$variable" = "" ]; then
