@@ -145,11 +145,8 @@ rm $build_file
 
 EOF
 
-        local -A o=( ['#NL']='\n' ['#TB']='\t' )
-
-        for i in "${!o[@]}"; do
-                sed -i "s/${i}/${o[$i]}/g" $build_file
-        done
+        sed -i '' 's/#NL/\
+/g;s/#TB/	/g' "$build_file"
 
         # Unset global variables
         unset optparse_usage
