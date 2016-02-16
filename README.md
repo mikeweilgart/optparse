@@ -21,10 +21,12 @@ optparse.define short=v long=verbose desc="Set flag for verbose mode" variable=v
 ```    
 
 ###2. Evaluate your arguments
-The `optparse.build` function creates a temporary header script based on the provided argument definitions. Simply source the file the function returns, to parse the arguments.
+The `optparse.build` function generates the option parsing code you need.
+Simply use process substitution to source the generated code,
+by including the following line in your script:
 
 ```bash
-source $( optparse.build )
+source <( optparse.build )
 ```
 
 ####That's it!

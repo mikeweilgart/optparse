@@ -81,13 +81,11 @@ optparse.define() {
 
 # -----------------------------------------------------------------------------------------------------------------------------
 optparse.build() {
-        local build_file="$(mktemp -t optparse-XXXXXXXXXX.tmp)"
-        # On BSD systems this could just be "mktemp -t optparse", but this way it will succeed with GNU mktemp as well.
-
         # Building getopts header here
 
         # Function usage
-        cat << EOF > $build_file
+        cat << EOF | sed 's/#NL/\
+/g;s/#TB/	/g'
 usage() {
 cat << XXX
 usage: \$0 [OPTIONS]
@@ -140,13 +138,8 @@ while getopts "$optparse_arguments_string" option; do
         esac
 done
 
-# Clean up after self
-rm $build_file
-
 EOF
 
-        sed -i '' 's/#NL/\
-/g;s/#TB/	/g' "$build_file"
 
         # Unset global variables
         unset optparse_usage
@@ -154,8 +147,5 @@ EOF
         unset optparse_arguments_string
         unset optparse_defaults
         unset optparse_contractions
-
-        # Return file name to parent
-        echo "$build_file"
 }
 # -----------------------------------------------------------------------------------------------------------------------------
