@@ -24,27 +24,34 @@ optparse.define() {
                 local value="$( echo $option | awk -F "=" '{print $2}' )";
 
                 #essentials: shortname, longname, description
-                if [ "$key" = "short" ]; then
+                case "$key" in
+                  (short)
                         local shortname="$value"
                         if [ ${#shortname} -ne 1 ]; then
                                 optparse.throw_error "short name expected to be one character long"
                         fi
                         local short="-${shortname}"
-                elif [ "$key" = "long" ]; then
+                    ;;
+                  (long)
                         local longname="$value"
                         if [ ${#longname} -lt 2 ]; then
                                 optparse.throw_error "long name expected to be atleast one character long"
                         fi
                         local long="--${longname}"
-                elif [ "$key" = "desc" ]; then
+                    ;;
+                  (desc)
                         local desc="$value"
-                elif [ "$key" = "default" ]; then
+                    ;;
+                  (default)
                         local default="$value"
-                elif [ "$key" = "variable" ]; then
+                    ;;
+                  (variable)
                         local variable="$value"
-                elif [ "$key" = "value" ]; then
+                    ;;
+                  (value)
                         local val="$value"
-                fi
+                    ;;
+                esac
                 shift
         done
 
